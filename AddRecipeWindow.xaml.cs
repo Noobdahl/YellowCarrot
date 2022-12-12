@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using YellowCarrot.Data;
@@ -86,7 +85,7 @@ namespace YellowCarrot
             Ingredient nIngredient = new()
             {
                 Name = tbIngredientName.Text,
-                Quantity = Convert.ToInt32(tbIngredientQuantity.Text),
+                Quantity = tbIngredientQuantity.Text,
             };
             ListViewItem nItem = new();
             nItem.Content = $"{nIngredient.Name} x{nIngredient.Quantity}";

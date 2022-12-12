@@ -24,19 +24,17 @@ namespace YellowCarrot
         {
             lvRecipes.Items.Clear();
             ToggleButtons(false);
-            if (s == "")
+            using (RecipeDbContext context = new())
             {
-                using (RecipeDbContext context = new())
+                UnitOfWork uow = new(context);
+                if (s == "")
                 {
-                    UnitOfWork uow = new(context);
-                    List<Recipe> recipes = uow.RecipeRepo.GetAllRecipes();
-                    AddRecipesToListView(recipes);
+                    AddRecipesToListView(uow.RecipeRepo.GetAllRecipes());
                 }
-            }
-            else
-            {
-                MessageBox.Show("Searching");
-                //sökfunktion efter s
+                else
+                {
+                    AddRecipesToListView(uow.RecipeRepo.GetSearchResult(s));
+                }
             }
         }
         private void ToggleButtons(bool toggle)
@@ -66,7 +64,6 @@ namespace YellowCarrot
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            ToggleButtons(false);
             if (MessageBox.Show("Are you sure you want to delete this recipe?", "Delete recipe", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             //No
             {
@@ -75,10 +72,18 @@ namespace YellowCarrot
             else
             //Yes
             {
+                ToggleButtons(false);
                 ListViewItem sItem = lvRecipes.SelectedItem as ListViewItem;
                 Recipe sRecipe = sItem.Tag as Recipe;
                 if (sRecipe.UserId == loginId)
                 {
+                    using (RecipeDbContext context = new())
+                    {
+                        UnitOfWork uow = new(context);
+                        uow.RecipeRepo.DeleteRecipe(sRecipe);
+                        uow.SaveChanges();
+                    }
+                    LoadRecipeListview("");
                     MessageBox.Show("Successfully deleted!");
 
                 }
@@ -89,12 +94,21 @@ namespace YellowCarrot
 
         private void btnSearch_Click(object sender, RoutedEventArgs e)
         {
-
+            LoadRecipeListview(tbSearch.Text);
         }
 
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
-
+            Recipe sRecipe = GetSelectedRecipe();
+            DetailsWindow detailsWindow = new(sRecipe);
+            detailsWindow.Owner = this;
+            detailsWindow.Show();
+            this.Hide();
+        }
+        private Recipe GetSelectedRecipe()
+        {
+            ListViewItem sItem = lvRecipes.SelectedItem as ListViewItem;
+            return sItem.Tag as Recipe;
         }
 
         private void lvRecipes_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -24,10 +24,7 @@ namespace YellowCarrot.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Recipe>().HasMany(u => u.Ingredients).WithOne(r => r.Recipe).OnDelete(DeleteBehavior.Cascade);
-            //modelBuilder.Entity<User>().HasMany(u => u.CreatedRooms).WithOne(r => r.Creator).OnDelete(DeleteBehavior.SetNull);
-            //modelBuilder.Entity<User>().HasMany(u => u.JoinedRooms).WithMany(m => m.Members);
-
-            //modelBuilder.Entity<User>().HasMany(u => u.Messages).WithOne(m => m.User).OnDelete(DeleteBehavior.SetNull);
+            modelBuilder.Entity<Recipe>().HasMany(u => u.Steps).WithOne(r => r.Recipe).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace YellowCarrot
 {
@@ -22,6 +10,30 @@ namespace YellowCarrot
         public DetailsWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnSave_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Owner.Show();
+            this.Close();
+        }
+        private void btnEdit_Click(object sender, RoutedEventArgs e)
+        {
+            btnSave.Visibility = Visibility.Visible;
+            btnEdit.Visibility = Visibility.Hidden;
+            tbRecipeName.IsEnabled = true;
+            tbTagName.IsEnabled = true;
+            btnAddTag.IsEnabled = true;
+            tbIngredientName.IsEnabled = true;
+            tbIngredientQuantity.IsEnabled = true;
+            btnAddIngredient.IsEnabled = true;
+            tbStepName.IsEnabled = true;
+            btnAddStep.IsEnabled = true;
         }
     }
 }

@@ -22,5 +22,15 @@ namespace YellowCarrot.Repositories
         {
             context.Recipes.Add(recipe);
         }
+
+        public void DeleteRecipe(Recipe sRecipe)
+        {
+            context.Recipes.Remove(sRecipe);
+        }
+
+        public List<Recipe> GetSearchResult(string keyWord)
+        {
+            return context.Recipes.Where(r => r.Name.Contains(keyWord)).ToList();
+        }
     }
 }

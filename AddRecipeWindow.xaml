@@ -6,70 +6,121 @@
         xmlns:local="clr-namespace:YellowCarrot"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="AddRecipeWindow" Height="450" Width="800">
+        Title="AddRecipeWindow" Height="400" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="25"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="0.5*"/>
+            <ColumnDefinition Width="25"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="20"/>
+            <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        <StackPanel
-            Grid.Column="2"
-            Grid.Row="1"
-            Grid.RowSpan="2">
-            <Label
-                Content="Recipe name:"/>
-            <TextBox
-                Name="tbRecipeName"/>
-            <Button
-                Name="btnSave"
-                Content="Save" Click="btnSave_Click"/>
-            <Button
-                Name="Cancel"
-                Content="Cancel" Click="Cancel_Click"/>
-            <Label
-                Content="Ingredient + quantity:"/>
-            <TextBox
-                Name="tbIngredientName"/>
-            <TextBox
-                Name="tbIngredientQuantity"/>
-            <Button
-                Name="btnAddIngredient"
-                Content="Add Ingredient" Click="btnAddIngredient_Click"/>
-            <Label
-                Content="Tags:"/>
-            <TextBox
-                Name="tbTagName"/>
-            <Button
-                Name="btnAddTag"
-                Content="Add Tag" Click="btnAddTag_Click"/>
-            <Label
-                Content="Step:"/>
-            <TextBox
-                Name="tbStepName"/>
-            <Button
-                Name="btnAddStep"
-                Content="Add Step" Click="btnAddStep_Click"/>
-        </StackPanel>
-        <ListView
-            Name="lvIngredients"
-            Grid.Column="1"
-            Grid.Row="1"/>
-        <ListView
-            Name="lvTags"
-            Grid.Column="1"
-            Grid.Row="2"/>
-        <ListView
-            Name="lvSteps"
+
+        <TabControl Grid.Column="1" Grid.Row="1"
+                    Grid.ColumnSpan="4"
+                    Grid.RowSpan="2">
+            <!--tab 1-->
+            <TabItem Header="Name and tags" Height="20" VerticalAlignment="Top">
+                <StackPanel HorizontalAlignment="Center">
+                    <Label Content="Recipe name:"/>
+                    <TextBox 
+                        Name="tbRecipeName"   
+                        Width="150"
+                        Margin="5"/>
+                    <Label
+                        Content="Tags:"/>
+                    <TextBox
+                        Name="tbTagName"
+                        Margin="5"/>
+                    <Button
+                        Name="btnAddTag"
+                        Margin="5"
+                        Content="Add Tag" 
+                        Click="btnAddTag_Click"/>
+                    <ListView
+                        Name="lvTags"
+                        Grid.Column="1"
+                        Grid.Row="2"
+                        Height="100"
+                        Margin="5"/>
+                    
+                </StackPanel>
+
+            </TabItem>
+            
+            <!--tab 2--> 
+            <TabItem Header="Ingredients" Height="20" VerticalAlignment="Top">
+                <StackPanel
+                    HorizontalAlignment="Center">
+                    <Label
+                        Content="Ingredient:"/>
+                    <TextBox
+                        Name="tbIngredientName"
+                        Margin="5"
+                        Width="150"/>
+                    <Label
+                        Content="Quantity:"
+                        />
+                    <TextBox
+                        Name="tbIngredientQuantity"
+                        Margin="5"
+                        Width="150"/>
+                    <Button
+                        Name="btnAddIngredient"
+                        Content="Add Ingredient" 
+                        Margin="5"
+                        Click="btnAddIngredient_Click"/>
+                    <ListView
+                        Name="lvIngredients"
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Height="100"
+                        Margin="5"/>
+                </StackPanel>
+            </TabItem>
+            
+            <!--tab 3-->
+            <TabItem Header="How To" Height="20" VerticalAlignment="Top">
+                <StackPanel
+                    HorizontalAlignment="Center">
+                    <Label
+                        Content="Step:"/>
+                    <TextBox
+                        Name="tbStepName"
+                        Width="150"
+                        TextWrapping="Wrap"
+                        Height="100"
+                        Margin="5"/>
+                    <Button
+                        Name="btnAddStep"
+                        Margin="5"
+                        Content="Add Step" Click="btnAddStep_Click"/>
+                    <ListView
+                        Name="lvSteps"
+                        Grid.Column="3"
+                        Grid.Row="1"
+                        Height="140">
+                    </ListView>
+                </StackPanel>
+            </TabItem>
+
+        </TabControl>
+        <Button
+            Name="btnSave"
             Grid.Column="3"
-            Grid.Row="1"/>
+            Margin="3"
+            Content="Save" Click="btnSave_Click"/>
+        <Button
+            Name="Cancel"
+            Grid.Column="4"
+            Margin="3"
+            Content="Cancel" Click="Cancel_Click"/>
     </Grid>
 </Window>
