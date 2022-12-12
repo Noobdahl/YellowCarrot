@@ -5,8 +5,45 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:YellowCarrot"
         mc:Ignorable="d"
-        Title="RegisterWindow" Height="450" Width="800">
+        WindowStartupLocation="CenterScreen"
+        Title="Register" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <StackPanel
+            Grid.Column="2"
+            Grid.Row="1">
+            <Label
+                Content="Username:"/>
+            <TextBox
+                Name="tbUsername"
+                />
+            <Label
+                Content="Password:"/>
+            <PasswordBox
+                Name="pbPassword"
+                />
+            <Label
+                Content="Confirm Password:"/>
+            <PasswordBox
+                Name="pbConfirmPassword"
+                />
+            <Button
+                Name="btnRegister"
+                Content="Register" Click="btnRegister_Click"/>
+            <Button
+                Name="Cancel"
+                Content="Cancel" Click="Cancel_Click"/>
+        </StackPanel>
     </Grid>
 </Window>

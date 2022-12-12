@@ -7,6 +7,7 @@ namespace YellowCarrot.Models
         [Key]
         public int StepId { get; set; }
         public int Order { get; set; }
+        [MaxLength(250)]
         public string Description { get; set; } = null!;
         public int RecipeId { get; set; }
         public Recipe Recipe { get; set; }

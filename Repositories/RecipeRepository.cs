@@ -1,4 +1,8 @@
-﻿using YellowCarrot.Data;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Linq;
+using YellowCarrot.Data;
+using YellowCarrot.Models;
 
 namespace YellowCarrot.Repositories
 {
@@ -9,6 +13,10 @@ namespace YellowCarrot.Repositories
         {
             this.context = context;
         }
-        //CRUD
+
+        public List<Recipe> GetAllRecipes()
+        {
+            return context.Recipes.Include(r => r.Ingredients).Include(r => r.Steps).Include(r => r.Tags).ToList();
+        }
     }
 }

@@ -1,16 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
+using YellowCarrot.Data;
+using YellowCarrot.Models;
+using YellowCarrot.Repositories;
 
 namespace YellowCarrot
 {
@@ -22,6 +13,36 @@ namespace YellowCarrot
         public RegisterWindow()
         {
             InitializeComponent();
+        }
+
+        private void btnRegister_Click(object sender, RoutedEventArgs e)
+        {
+            //TODO matcha passwords
+            User nUser = new()
+            {
+                Name = tbUsername.Text,
+                Password = pbPassword.Password,
+                IsAdmin = false
+            };
+            using (UserDbContext context = new())
+            {
+                UserRepository u = new(context);
+                if (u.AddUser(nUser))
+                {
+                    this.Owner.Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Username is already taken!");
+                }
+            }
+        }
+
+        private void Cancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Owner.Show();
+            this.Close();
         }
     }
 }

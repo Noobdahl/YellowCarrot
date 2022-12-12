@@ -1,16 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using YellowCarrot.Data;
+using YellowCarrot.Models;
+using YellowCarrot.Repositories;
 
 namespace YellowCarrot
 {
@@ -19,9 +12,57 @@ namespace YellowCarrot
     /// </summary>
     public partial class RecipeWindow : Window
     {
-        public RecipeWindow()
+        public RecipeWindow(int loginId)
         {
             InitializeComponent();
+            LoadRecipeListview("");
+        }
+
+        private void LoadRecipeListview(string s)
+        {
+            if (s == "")
+            {
+                using (RecipeDbContext context = new())
+                {
+                    UnitOfWork uow = new(context);
+                    List<Recipe> recipes = uow.recipeRepo.GetAllRecipes();
+                    AddRecipesToListView(recipes);
+                }
+            }
+            else
+            {
+                //sökfunktion efter s
+            }
+        }
+
+        private void AddRecipesToListView(List<Recipe> recipes)
+        {
+            foreach (Recipe recipe in recipes)
+            {
+                ListViewItem nItem = new();
+                nItem.Content = recipe.Name;
+                nItem.Tag = recipe;
+            }
+        }
+
+        private void btnAddRecipe_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnSearch_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnDetails_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
