@@ -12,6 +12,22 @@ namespace YellowCarrot
         public MainWindow()
         {
             InitializeComponent();
+
+            //Trying to remove intial delay for connection to DB.
+
+            //using (RecipeDbContext context = new())
+            //{
+            //    UnitOfWork uow = new(context);
+            //    uow.StepRepo.GetType();
+            //}
+            //using (UserDbContext context = new())
+            //{
+            //    UserRepository u = new(context);
+            //    u.LoginUser("", "");
+            //}
+
+            tbUsername.Text = "Micke";
+            pbPassword.Password = "asd";
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)

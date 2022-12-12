@@ -18,5 +18,9 @@ namespace YellowCarrot.Repositories
         {
             return context.Recipes.Include(r => r.Ingredients).Include(r => r.Steps).Include(r => r.Tags).ToList();
         }
+        public void CreateNewRecipe(Recipe recipe)
+        {
+            context.Recipes.Add(recipe);
+        }
     }
 }

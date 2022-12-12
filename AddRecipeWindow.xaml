@@ -8,6 +8,68 @@
         WindowStartupLocation="CenterScreen"
         Title="AddRecipeWindow" Height="450" Width="800">
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="20"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="20"/>
+        </Grid.RowDefinitions>
+        <StackPanel
+            Grid.Column="2"
+            Grid.Row="1"
+            Grid.RowSpan="2">
+            <Label
+                Content="Recipe name:"/>
+            <TextBox
+                Name="tbRecipeName"/>
+            <Button
+                Name="btnSave"
+                Content="Save" Click="btnSave_Click"/>
+            <Button
+                Name="Cancel"
+                Content="Cancel" Click="Cancel_Click"/>
+            <Label
+                Content="Ingredient + quantity:"/>
+            <TextBox
+                Name="tbIngredientName"/>
+            <TextBox
+                Name="tbIngredientQuantity"/>
+            <Button
+                Name="btnAddIngredient"
+                Content="Add Ingredient" Click="btnAddIngredient_Click"/>
+            <Label
+                Content="Tags:"/>
+            <TextBox
+                Name="tbTagName"/>
+            <Button
+                Name="btnAddTag"
+                Content="Add Tag" Click="btnAddTag_Click"/>
+            <Label
+                Content="Step:"/>
+            <TextBox
+                Name="tbStepName"/>
+            <Button
+                Name="btnAddStep"
+                Content="Add Step" Click="btnAddStep_Click"/>
+        </StackPanel>
+        <ListView
+            Name="lvIngredients"
+            Grid.Column="1"
+            Grid.Row="1"/>
+        <ListView
+            Name="lvTags"
+            Grid.Column="1"
+            Grid.Row="2"/>
+        <ListView
+            Name="lvSteps"
+            Grid.Column="3"
+            Grid.Row="1"/>
     </Grid>
 </Window>

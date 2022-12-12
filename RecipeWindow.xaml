@@ -25,7 +25,8 @@
             Grid.Row="1">
             <ListView
                 Name="lvRecipes"
-                Height="200"/>
+                Height="200"
+                SelectionChanged="lvRecipes_SelectionChanged"/>
             <Button
                 Name="btnAddRecipe"
                 Content="Add Recipe" Click="btnAddRecipe_Click"/>
@@ -44,6 +45,9 @@
             <Button
                 Name="btnSearch"
                 Content="Search" Click="btnSearch_Click"/>
+            <Button
+                Name="btnLogout"
+                Content="Log out" Click="btnLogout_Click"/>
         </StackPanel>
     </Grid>
 </Window>
