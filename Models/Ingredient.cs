@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace YellowCarrot.Models
 {
@@ -10,6 +10,9 @@ namespace YellowCarrot.Models
         [MaxLength(50)]
         public string Name { get; set; } = null!;
         public int Quantity { get; set; }
-        public List<Recipe> Recipes { get; set; } = new();
+        [ForeignKey(nameof(Recipe))]
+        public int RecipeId { get; set; }
+        public Recipe Recipe { get; set; }
+        //public List<Recipe> Recipes { get; set; } = new();
     }
 }
