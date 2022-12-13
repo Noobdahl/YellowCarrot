@@ -1,5 +1,6 @@
 ﻿using System.Windows;
 using YellowCarrot.Data;
+using YellowCarrot.Models;
 using YellowCarrot.Repositories;
 
 namespace YellowCarrot
@@ -37,10 +38,11 @@ namespace YellowCarrot
                 UserRepository u = new(context);
 
                 //LoginUser gets UserId in return
-                int loginId = u.LoginUser(tbUsername.Text, pbPassword.Password);
-                if (loginId > 0)
+                User? loggedInUser = u.LoginUser(tbUsername.Text, pbPassword.Password);
+
+                if (loggedInUser != null)
                 {
-                    RecipeWindow recipeWindow = new(loginId);
+                    RecipeWindow recipeWindow = new(loggedInUser.UserId, loggedInUser.IsAdmin);
                     recipeWindow.Owner = this;
                     recipeWindow.Show();
                     this.Hide();
@@ -49,6 +51,7 @@ namespace YellowCarrot
                 {
                     MessageBox.Show("Incorrecto!");
                 }
+                pbPassword.Clear();
             }
         }
 
@@ -57,6 +60,7 @@ namespace YellowCarrot
             RegisterWindow regWindow = new RegisterWindow();
             regWindow.Owner = this;
             regWindow.Show();
+            pbPassword.Clear();
             this.Hide();
         }
     }

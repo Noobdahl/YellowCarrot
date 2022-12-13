@@ -11,8 +11,7 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
+
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -21,32 +20,40 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <StackPanel
-            Grid.Column="2"
+            Grid.Column="1"
             Grid.Row="1">
             <ListView
                 Name="lvRecipes"
+                
                 Height="200"
                 SelectionChanged="lvRecipes_SelectionChanged"/>
             <Button
                 Name="btnAddRecipe"
+                Width="150"
                 Content="Add Recipe" Click="btnAddRecipe_Click"/>
             <Button
                 Name="btnDetails"
+                Width="150"
                 IsEnabled="False"
                 Content="Details" Click="btnDetails_Click"/>
             <Button
                 Name="btnDelete"
+                Width="150"
                 IsEnabled="False"
                 Content="Delete Recipe" Click="btnDelete_Click"/>
             <Label
+                Width="150"
                 Content="Sök:"/>
             <TextBox
+                Width="150"
                 Name="tbSearch"/>
             <Button
                 Name="btnSearch"
+                Width="150"
                 Content="Search" Click="btnSearch_Click"/>
             <Button
                 Name="btnLogout"
+                Width="150"
                 Content="Log out" Click="btnLogout_Click"/>
         </StackPanel>
     </Grid>

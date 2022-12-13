@@ -33,14 +33,15 @@ namespace YellowCarrot.Repositories
             return true;
         }
 
-        public int LoginUser(string userName, string password)
+        public User? LoginUser(string userName, string password)
         {
             User? user = context.Users.Where(u => u.Name == userName && u.Password == password).FirstOrDefault();
-            if (user != null)
-            {
-                return user.UserId;
-            }
-            return -1;
+            return user;
+        }
+        public string GetUserNameFromId(int id)
+        {
+            User? user = context.Users.Where(u => u.UserId == id).FirstOrDefault();
+            return user.Name;
         }
     }
 }

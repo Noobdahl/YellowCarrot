@@ -13,9 +13,11 @@ namespace YellowCarrot
     public partial class RecipeWindow : Window
     {
         int loginId;
-        public RecipeWindow(int loginId)
+        private bool isAdmin = false;
+        public RecipeWindow(int loginId, bool isAdmin)
         {
             InitializeComponent();
+            this.isAdmin = isAdmin;
             this.loginId = loginId;
             LoadRecipeListview("");
         }
@@ -45,12 +47,20 @@ namespace YellowCarrot
 
         private void AddRecipesToListView(List<Recipe> recipes)
         {
-            foreach (Recipe recipe in recipes)
+            using (UserDbContext context = new())
             {
-                ListViewItem nItem = new();
-                nItem.Content = recipe.Name;
-                nItem.Tag = recipe;
-                lvRecipes.Items.Add(nItem);
+                UserRepository userRepo = new(context);
+                using (RecipeDbContext _context = new())
+                {
+                    UnitOfWork uow = new(_context);
+                    foreach (Recipe recipe in recipes)
+                    {
+                        ListViewItem nItem = new();
+                        nItem.Content = $"{recipe.Name} - by {userRepo.GetUserNameFromId(recipe.UserId)}\n{uow.TagRepo.GetAllTagsFromRecipeById(recipe.RecipeId)}";
+                        nItem.Tag = recipe;
+                        lvRecipes.Items.Add(nItem);
+                    }
+                }
             }
         }
 
@@ -75,7 +85,7 @@ namespace YellowCarrot
                 ToggleButtons(false);
                 ListViewItem sItem = lvRecipes.SelectedItem as ListViewItem;
                 Recipe sRecipe = sItem.Tag as Recipe;
-                if (sRecipe.UserId == loginId)
+                if (sRecipe.UserId == loginId || isAdmin)
                 {
                     using (RecipeDbContext context = new())
                     {
@@ -100,7 +110,7 @@ namespace YellowCarrot
         private void btnDetails_Click(object sender, RoutedEventArgs e)
         {
             Recipe sRecipe = GetSelectedRecipe();
-            DetailsWindow detailsWindow = new(sRecipe);
+            DetailsWindow detailsWindow = new(sRecipe.RecipeId, sRecipe.UserId == loginId || isAdmin);
             detailsWindow.Owner = this;
             detailsWindow.Show();
             this.Hide();

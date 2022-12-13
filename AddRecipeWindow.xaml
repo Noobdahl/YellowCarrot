@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:YellowCarrot"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="AddRecipeWindow" Height="400" Width="500">
+        Title="AddRecipeWindow" Height="430" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25"/>
@@ -50,6 +50,11 @@
                         Grid.Row="2"
                         Height="100"
                         Margin="5"/>
+                    <Button
+                        Name="btnRemoveTag"
+                        Grid.Column="4"
+                        Margin="3"
+                        Content="Remove Tag" Click="btnRemoveTag_Click"/>
                     
                 </StackPanel>
 
@@ -83,6 +88,11 @@
                         Grid.Row="1"
                         Height="100"
                         Margin="5"/>
+                    <Button
+                        Name="btnRemoveIngredient"
+                        Grid.Column="4"
+                        Margin="3"
+                        Content="Remove Ingredient" Click="btnRemoveIngredient_Click"/>
                 </StackPanel>
             </TabItem>
             
@@ -96,7 +106,7 @@
                         Name="tbStepName"
                         Width="150"
                         TextWrapping="Wrap"
-                        Height="100"
+                        Height="80"
                         Margin="5"/>
                     <Button
                         Name="btnAddStep"
@@ -108,6 +118,11 @@
                         Grid.Row="1"
                         Height="140">
                     </ListView>
+                    <Button
+                        Name="btnRemoveStep"
+                        Grid.Column="4"
+                        Margin="3"
+                        Content="Remove Step" Click="btnRemoveStep_Click"/>
                 </StackPanel>
             </TabItem>
 

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:YellowCarrot"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Details" Height="400" Width="500">
+        Title="Details" Height="430" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="25"/>
@@ -32,24 +32,34 @@
                     <Label Content="Recipe name:"/>
                     <TextBox 
                         Name="tbRecipeName"   
+                        IsEnabled="False"
                         Width="150"
                         Margin="5"/>
                     <Label
                         Content="Tags:"/>
                     <TextBox
                         Name="tbTagName"
+                        IsEnabled="False"
                         Margin="5"/>
                     <Button
                         Name="btnAddTag"
                         Margin="5"
+                        IsEnabled="False"
                         Content="Add Tag" 
                         Click="btnAddTag_Click"/>
                     <ListView
                         Name="lvTags"
+                        IsEnabled="False"
                         Grid.Column="1"
                         Grid.Row="2"
                         Height="100"
                         Margin="5"/>
+                    <Button
+                        Name="btnRemoveTag"
+                        Grid.Column="4"
+                        IsEnabled="False"
+                        Margin="3"
+                        Content="Remove Tag" Click="btnRemoveTag_Click"/>
 
                 </StackPanel>
 
@@ -64,6 +74,7 @@
                     <TextBox
                         Name="tbIngredientName"
                         Margin="5"
+                        IsEnabled="False"
                         Width="150"/>
                     <Label
                         Content="Quantity:"
@@ -71,18 +82,27 @@
                     <TextBox
                         Name="tbIngredientQuantity"
                         Margin="5"
+                        IsEnabled="False"
                         Width="150"/>
                     <Button
                         Name="btnAddIngredient"
+                        IsEnabled="False"
                         Content="Add Ingredient" 
                         Margin="5"
                         Click="btnAddIngredient_Click"/>
                     <ListView
                         Name="lvIngredients"
+                        IsEnabled="False"
                         Grid.Column="1"
                         Grid.Row="1"
                         Height="100"
                         Margin="5"/>
+                    <Button
+                        Name="btnRemoveIngredient"
+                        IsEnabled="False"
+                        Grid.Column="4"
+                        Margin="3"
+                        Content="Remove Ingredient" Click="btnRemoveIngredient_Click"/>
                 </StackPanel>
             </TabItem>
 
@@ -95,19 +115,29 @@
                     <TextBox
                         Name="tbStepName"
                         Width="150"
+                        IsEnabled="False"
                         TextWrapping="Wrap"
-                        Height="100"
+                        Height="80"
                         Margin="5"/>
                     <Button
                         Name="btnAddStep"
                         Margin="5"
-                        Content="Add Step" Click="btnAddStep_Click"/>
+                        IsEnabled="False"
+                        Content="Add Step"
+                        Click="btnAddStep_Click"/>
                     <ListView
                         Name="lvSteps"
+                        IsEnabled="False"
                         Grid.Column="3"
                         Grid.Row="1"
                         Height="140">
                     </ListView>
+                    <Button
+                        Name="btnRemoveStep"
+                        IsEnabled="False"
+                        Grid.Column="4"
+                        Margin="3"
+                        Content="Remove Step" Click="btnRemoveStep_Click"/>
                 </StackPanel>
             </TabItem>
 
@@ -124,9 +154,9 @@
             Margin="3"
             Content="Edit" Click="btnEdit_Click"/>
         <Button
-            Name="Cancel"
+            Name="btnCancel"
             Grid.Column="4"
             Margin="3"
-            Content="Cancel" Click="Cancel_Click"/>
+            Content="Cancel" Click="btnCancel_Click"/>
     </Grid>
 </Window>
