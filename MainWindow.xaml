@@ -6,12 +6,10 @@
         xmlns:local="clr-namespace:YellowCarrot"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Sign in" Height="450" Width="800">
+        Title="Sign in" Height="250" Width="300">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
@@ -21,7 +19,7 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
         <StackPanel
-            Grid.Column="2"
+            Grid.Column="1"
             Grid.Row="1">
             <Label
                 Content="Username:"/>
