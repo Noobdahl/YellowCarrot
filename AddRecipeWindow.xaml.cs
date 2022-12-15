@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media;
 using YellowCarrot.Data;
 using YellowCarrot.Models;
 using YellowCarrot.Repositories;
@@ -21,6 +22,12 @@ namespace YellowCarrot
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
+            if (tbRecipeName.Text.Trim().Length < 1)
+            {
+                lblRecipeName.Foreground = new SolidColorBrush(Colors.Red);
+                MessageBox.Show("You need to name your recipe.");
+                return;
+            }
             using (RecipeDbContext context = new())
             {
                 UnitOfWork uow = new(context);
@@ -95,10 +102,20 @@ namespace YellowCarrot
 
         private void btnAddIngredient_Click(object sender, RoutedEventArgs e)
         {
+            lblIngredient.Foreground = new SolidColorBrush(Colors.Black);
+            lblQuantity.Foreground = new SolidColorBrush(Colors.Black);
+            if (tbIngredientName.Text.Trim().Length < 1)
+            {
+                lblIngredient.Foreground = new SolidColorBrush(Colors.Red); return;
+            }
+            if (tbIngredientQuantity.Text.Trim().Length < 1)
+            {
+                lblQuantity.Foreground = new SolidColorBrush(Colors.Red); return;
+            }
             Ingredient nIngredient = new()
             {
-                Name = tbIngredientName.Text,
-                Quantity = tbIngredientQuantity.Text,
+                Name = tbIngredientName.Text.Trim(),
+                Quantity = tbIngredientQuantity.Text.Trim(),
             };
             ListViewItem nItem = new();
             nItem.Content = $"{nIngredient.Quantity} - {nIngredient.Name}";
@@ -110,9 +127,14 @@ namespace YellowCarrot
 
         private void btnAddTag_Click(object sender, RoutedEventArgs e)
         {
+            lblTags.Foreground = new SolidColorBrush(Colors.Black);
+            if (tbTagName.Text.Trim().Length < 1)
+            {
+                lblTags.Foreground = new SolidColorBrush(Colors.Red); return;
+            }
             Tag nTag = new()
             {
-                Name = tbTagName.Text,
+                Name = tbTagName.Text.Trim(),
             };
             ListViewItem nItem = new();
             nItem.Content = $"#{nTag.Name}";
@@ -123,12 +145,17 @@ namespace YellowCarrot
 
         private void btnAddStep_Click(object sender, RoutedEventArgs e)
         {
+            lblStep.Foreground = new SolidColorBrush(Colors.Black);
+            if (tbStepName.Text.Trim().Length < 1)
+            {
+                lblStep.Foreground = new SolidColorBrush(Colors.Red); return;
+            }
             Step nStep = new()
             {
-                Description = tbStepName.Text
+                Description = tbStepName.Text.Trim()
             };
             ListViewItem nItem = new();
-            nItem.Content = $"{tbStepName.Text}";
+            nItem.Content = $"{nStep.Description}";
             nItem.Tag = nStep;
             lvSteps.Items.Add(nItem);
             tbStepName.Clear();

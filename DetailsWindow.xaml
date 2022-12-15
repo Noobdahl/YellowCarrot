@@ -29,13 +29,13 @@
             <!--tab 1-->
             <TabItem Header="Name and tags" Height="20" VerticalAlignment="Top">
                 <StackPanel HorizontalAlignment="Center">
-                    <Label Content="Recipe name:"/>
+                    <Label Name="lblRecipeName" Content="Recipe name:"/>
                     <TextBox 
                         Name="tbRecipeName"   
                         IsEnabled="False"
                         Width="150"
                         Margin="5"/>
-                    <Label
+                    <Label Name ="lblTags"
                         Content="Tags:"/>
                     <TextBox
                         Name="tbTagName"
@@ -69,14 +69,14 @@
             <TabItem Header="Ingredients" Height="20" VerticalAlignment="Top">
                 <StackPanel
                     HorizontalAlignment="Center">
-                    <Label
+                    <Label Name="lblIngredient"
                         Content="Ingredient:"/>
                     <TextBox
                         Name="tbIngredientName"
                         Margin="5"
                         IsEnabled="False"
                         Width="150"/>
-                    <Label
+                    <Label Name="lblQuantity"
                         Content="Quantity:"
                         />
                     <TextBox
@@ -110,7 +110,7 @@
             <TabItem Header="How To" Height="20" VerticalAlignment="Top">
                 <StackPanel
                     HorizontalAlignment="Center">
-                    <Label
+                    <Label Name="lblStep"
                         Content="Step:"/>
                     <TextBox
                         Name="tbStepName"

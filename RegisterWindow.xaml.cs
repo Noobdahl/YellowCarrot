@@ -48,7 +48,7 @@ namespace YellowCarrot
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Oops, something went wrong! " + ex.Message);
+                MessageBox.Show("Oops, something went wrong!\n" + ex.Message);
             }
             pbPassword.Clear();
             pbConfirmPassword.Clear();
