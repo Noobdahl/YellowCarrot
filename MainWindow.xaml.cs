@@ -14,18 +14,17 @@ namespace YellowCarrot
         {
             InitializeComponent();
 
-            //Trying to remove intial delay for connection to DB.
-
-            //using (RecipeDbContext context = new())
-            //{
-            //    UnitOfWork uow = new(context);
-            //    uow.StepRepo.GetType();
-            //}
-            //using (UserDbContext context = new())
-            //{
-            //    UserRepository u = new(context);
-            //    u.LoginUser("", "");
-            //}
+            //Removing intial delay for connection to DB.
+            using (RecipeDbContext context = new())
+                {
+                    UnitOfWork uow = new(context);
+                uow.RecipeRepo.GetSearchResult("");
+                }
+            using (UserDbContext context = new())
+            {
+                UserRepository u = new(context);
+                u.GetUserNameFromId(1);
+            }
 
             tbUsername.Text = "Micke";
             pbPassword.Password = "asd";
@@ -37,7 +36,7 @@ namespace YellowCarrot
             {
                 UserRepository u = new(context);
 
-                //LoginUser gets UserId in return
+                //LoginUser gets the userobject in return
                 User? loggedInUser = u.LoginUser(tbUsername.Text, pbPassword.Password);
 
                 if (loggedInUser != null)
