@@ -33,7 +33,7 @@ namespace YellowCarrot.Migrations.RecipeDb
 
                     b.HasIndex("TagsName");
 
-                    b.ToTable("RecipeTag");
+                    b.ToTable("RecipeTag", (string)null);
                 });
 
             modelBuilder.Entity("YellowCarrot.Models.Ingredient", b =>
@@ -61,7 +61,7 @@ namespace YellowCarrot.Migrations.RecipeDb
 
                     b.HasIndex("RecipeId");
 
-                    b.ToTable("Ingredients");
+                    b.ToTable("Ingredients", (string)null);
                 });
 
             modelBuilder.Entity("YellowCarrot.Models.Recipe", b =>
@@ -82,7 +82,7 @@ namespace YellowCarrot.Migrations.RecipeDb
 
                     b.HasKey("RecipeId");
 
-                    b.ToTable("Recipes");
+                    b.ToTable("Recipes", (string)null);
                 });
 
             modelBuilder.Entity("YellowCarrot.Models.Step", b =>
@@ -108,7 +108,7 @@ namespace YellowCarrot.Migrations.RecipeDb
 
                     b.HasIndex("RecipeId");
 
-                    b.ToTable("Steps");
+                    b.ToTable("Steps", (string)null);
                 });
 
             modelBuilder.Entity("YellowCarrot.Models.Tag", b =>
@@ -119,7 +119,7 @@ namespace YellowCarrot.Migrations.RecipeDb
 
                     b.HasKey("Name");
 
-                    b.ToTable("Tags");
+                    b.ToTable("Tags", (string)null);
                 });
 
             modelBuilder.Entity("RecipeTag", b =>
