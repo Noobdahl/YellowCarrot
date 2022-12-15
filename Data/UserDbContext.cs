@@ -27,27 +27,34 @@ namespace YellowCarrot.Data
             modelBuilder.UseEncryption(_provider);
 
             modelBuilder.Entity<User>().HasData(
-                new User()
-                {
-                    UserId = 1,
-                    Name = "admin",
-                    Password = "password",
-                    IsAdmin = true,
-                },
-                new User()
-                {
-                    UserId = 2,
-                    Name = "user",
-                    Password = "password",
-                    IsAdmin = false,
-                },
-                new User()
-                {
-                    UserId = 3,
-                    Name = "Micke",
-                    Password = "asd",
-                    IsAdmin = false,
-                });
+            new User()
+            {
+                UserId = 1,
+                Name = "admin",
+                Password = "password",
+                IsAdmin = true,
+            },
+            new User()
+            {
+                UserId = 2,
+                Name = "user",
+                Password = "password",
+                IsAdmin = false,
+            },
+            new User()
+            {
+                UserId = 3,
+                Name = "Micke",
+                Password = "asd",
+                IsAdmin = false,
+            },
+            new User()
+            {
+                UserId = 4,
+                Name = "Albin",
+                Password = "nibla",
+                IsAdmin = false,
+            });
         }
     }
 }

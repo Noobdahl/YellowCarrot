@@ -11,8 +11,8 @@ using YellowCarrot.Data;
 namespace YellowCarrot.Migrations.RecipeDb
 {
     [DbContext(typeof(RecipeDbContext))]
-    [Migration("20221212214901_ChangedQualityToString")]
-    partial class ChangedQualityToString
+    [Migration("20221215200417_TryingSeed")]
+    partial class TryingSeed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -65,6 +65,15 @@ namespace YellowCarrot.Migrations.RecipeDb
                     b.HasIndex("RecipeId");
 
                     b.ToTable("Ingredients");
+
+                    b.HasData(
+                        new
+                        {
+                            IngredientId = 1,
+                            Name = "Spaghetti",
+                            Quantity = "250g",
+                            RecipeId = 1
+                        });
                 });
 
             modelBuilder.Entity("YellowCarrot.Models.Recipe", b =>
@@ -86,6 +95,14 @@ namespace YellowCarrot.Migrations.RecipeDb
                     b.HasKey("RecipeId");
 
                     b.ToTable("Recipes");
+
+                    b.HasData(
+                        new
+                        {
+                            RecipeId = 1,
+                            Name = "Darth Vader's Bolognese",
+                            UserId = 3
+                        });
                 });
 
             modelBuilder.Entity("YellowCarrot.Models.Step", b =>
@@ -112,6 +129,15 @@ namespace YellowCarrot.Migrations.RecipeDb
                     b.HasIndex("RecipeId");
 
                     b.ToTable("Steps");
+
+                    b.HasData(
+                        new
+                        {
+                            StepId = 1,
+                            Description = "Use the force.",
+                            Order = 1,
+                            RecipeId = 1
+                        });
                 });
 
             modelBuilder.Entity("YellowCarrot.Models.Tag", b =>
@@ -123,6 +149,12 @@ namespace YellowCarrot.Migrations.RecipeDb
                     b.HasKey("Name");
 
                     b.ToTable("Tags");
+
+                    b.HasData(
+                        new
+                        {
+                            Name = "4/5"
+                        });
                 });
 
             modelBuilder.Entity("RecipeTag", b =>

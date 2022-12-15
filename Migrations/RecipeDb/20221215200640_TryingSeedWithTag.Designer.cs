@@ -11,8 +11,8 @@ using YellowCarrot.Data;
 namespace YellowCarrot.Migrations.RecipeDb
 {
     [DbContext(typeof(RecipeDbContext))]
-    [Migration("20221212175719_InitialCascade")]
-    partial class InitialCascade
+    [Migration("20221215200640_TryingSeedWithTag")]
+    partial class TryingSeedWithTag
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -37,6 +37,13 @@ namespace YellowCarrot.Migrations.RecipeDb
                     b.HasIndex("TagsName");
 
                     b.ToTable("RecipeTag");
+
+                    b.HasData(
+                        new
+                        {
+                            RecipesRecipeId = 1,
+                            TagsName = "4/5"
+                        });
                 });
 
             modelBuilder.Entity("YellowCarrot.Models.Ingredient", b =>
@@ -52,8 +59,10 @@ namespace YellowCarrot.Migrations.RecipeDb
                         .HasMaxLength(50)
                         .HasColumnType("nvarchar(50)");
 
-                    b.Property<int>("Quantity")
-                        .HasColumnType("int");
+                    b.Property<string>("Quantity")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("RecipeId")
                         .HasColumnType("int");
@@ -63,6 +72,15 @@ namespace YellowCarrot.Migrations.RecipeDb
                     b.HasIndex("RecipeId");
 
                     b.ToTable("Ingredients");
+
+                    b.HasData(
+                        new
+                        {
+                            IngredientId = 1,
+                            Name = "Spaghetti",
+                            Quantity = "250g",
+                            RecipeId = 1
+                        });
                 });
 
             modelBuilder.Entity("YellowCarrot.Models.Recipe", b =>
@@ -84,6 +102,14 @@ namespace YellowCarrot.Migrations.RecipeDb
                     b.HasKey("RecipeId");
 
                     b.ToTable("Recipes");
+
+                    b.HasData(
+                        new
+                        {
+                            RecipeId = 1,
+                            Name = "Darth Vader's Bolognese",
+                            UserId = 3
+                        });
                 });
 
             modelBuilder.Entity("YellowCarrot.Models.Step", b =>
@@ -110,6 +136,15 @@ namespace YellowCarrot.Migrations.RecipeDb
                     b.HasIndex("RecipeId");
 
                     b.ToTable("Steps");
+
+                    b.HasData(
+                        new
+                        {
+                            StepId = 1,
+                            Description = "Use the force.",
+                            Order = 1,
+                            RecipeId = 1
+                        });
                 });
 
             modelBuilder.Entity("YellowCarrot.Models.Tag", b =>
@@ -121,6 +156,12 @@ namespace YellowCarrot.Migrations.RecipeDb
                     b.HasKey("Name");
 
                     b.ToTable("Tags");
+
+                    b.HasData(
+                        new
+                        {
+                            Name = "4/5"
+                        });
                 });
 
             modelBuilder.Entity("RecipeTag", b =>
