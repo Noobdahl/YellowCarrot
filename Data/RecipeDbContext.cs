@@ -34,17 +34,15 @@ namespace YellowCarrot.Data
                 RecipeId = 1,
                 Name = "Darth Vader's Bolognese",
                 UserId = 3,
-                Ingredients = new List<Ingredient>() 
-                { 
-                    new Ingredient() 
-                    { 
-                        IngredientId = 1,
-                        Name = "Spaghetti",
-                        Quantity = "200g",
-                        RecipeId = 1
-                    } 
-                }
             });
+            modelBuilder.Entity<Ingredient>().HasData(new Ingredient()
+            {
+                IngredientId = 1,
+                Name = "Spaghetti",
+                Quantity = "250g",
+                RecipeId = 1,
+            });
+            modelBuilder.Entity<Step>().HasData(new Step())
 
 
             //modelBuilder.Entity<Recipe>().HasData(new Recipe()
