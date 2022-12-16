@@ -160,7 +160,7 @@
                 Grid.Row="3"
                 Foreground="#FFFF9800"
                 Background="Transparent"
-                FontSize="18"
+                FontSize="12"
                 BorderThickness="0"
                 FontWeight="Medium"
                 TextWrapping="Wrap"
@@ -171,7 +171,7 @@
                 BorderThickness="0"
                 Foreground="#FFFF9800"
                 Background="Transparent"
-                FontSize="18"
+                FontSize="12"
                 FontWeight="Medium"
                 TextWrapping="Wrap"
                 Name ="tbcRSteps"/>

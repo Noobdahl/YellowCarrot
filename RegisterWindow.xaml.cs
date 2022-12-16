@@ -18,6 +18,7 @@ namespace YellowCarrot
         }
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
+            //This try never fails, this program is just that smooth!
             try
             {
                 if (tbUsername.Text.Count() < 4)
@@ -26,7 +27,7 @@ namespace YellowCarrot
                     throw new Exception("Password must be atleast 4 characters long.");
                 else if (pbPassword.Password != pbConfirmPassword.Password)
                     throw new Exception("Passwords do not match.");
-
+                //Creates userobject to send to dB
                 User nUser = new()
                 {
                     Name = tbUsername.Text,

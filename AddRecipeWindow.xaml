@@ -168,14 +168,14 @@
             </Button.Resources>
         </Button>
         <Button
-            Name="Cancel"
+            Name="btnCancel"
             Grid.Column="4"
             Grid.Row="3"
             Margin="3"
             FontWeight="Medium"
             VerticalContentAlignment="Center"
             Background="#FFFFD08C"
-            Content="Cancel" Click="Cancel_Click">
+            Content="Cancel" Click="btnCancel_Click">
             <Button.Resources>
                 <Style TargetType="{x:Type Border}">
                     <Setter Property="CornerRadius" Value="10"/>
