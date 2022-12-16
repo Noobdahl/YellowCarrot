@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:YellowCarrot"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="RecipeWindow" Height="450" Width="800">
+        WindowStyle="None"
+        Title="RecipeWindow" Height="600" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
-
             <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -19,42 +19,164 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        <StackPanel
-            Grid.Column="1"
-            Grid.Row="1">
-            <ListView
+        <Grid.Background>
+            <ImageBrush ImageSource="/YellowCarrot;component/Images/background.png"/>
+        </Grid.Background>
+        
+
+
+        <Grid Grid.Column="1" Grid.ColumnSpan="1" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="20"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="30"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="50"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel
+            Grid.Column="0"
+            Grid.Row="1"
+                Grid.RowSpan="3">
+                <ListView
                 Name="lvRecipes"
                 
                 Height="200"
                 SelectionChanged="lvRecipes_SelectionChanged"/>
-            <Button
+                <Button
                 Name="btnAddRecipe"
-                Width="150"
-                Content="Add Recipe" Click="btnAddRecipe_Click"/>
-            <Button
+                Content="Add Recipe"
+                Click="btnAddRecipe_Click"
+                Width="100"
+                Height="25"
+                Margin="0,10,0,0" Background="#FFFFD08C">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button
                 Name="btnDetails"
-                Width="150"
-                IsEnabled="False"
-                Content="Details" Click="btnDetails_Click"/>
-            <Button
+                Content="Details"
+                Click="btnDetails_Click"
+                Width="100"
+                Height="25"
+                Margin="0,5,0,0" Background="#FFFFD08C">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <Button
                 Name="btnDelete"
-                Width="150"
-                IsEnabled="False"
-                Content="Delete Recipe" Click="btnDelete_Click"/>
-            <Label
-                Width="150"
-                Content="Sök:"/>
-            <TextBox
-                Width="150"
-                Name="tbSearch"/>
-            <Button
-                Name="btnSearch"
-                Width="150"
-                Content="Search" Click="btnSearch_Click"/>
-            <Button
+                Content="Delete"
+                Click="btnDelete_Click"
+                Width="100"
+                Height="25"
+                Margin="0,5,0,0" Background="#FFFFD08C">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+                <StackPanel 
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                Margin="0,20,0,0">
+                    <TextBox
+                    Width="150" 
+                    FontSize="20"
+                    FontWeight="Medium"
+                    Foreground="#FFFF9800"
+                    BorderThickness="0,0,0,3"
+                    BorderBrush="#FFFF9800"
+                    Background="Transparent"
+                    Name="tbSearch"/>
+                    <Button
+                    Name="btnSearch"
+                    Width="60"
+                    Margin="5,5,0,0" 
+                    Background="#FFFFD08C"
+                    Content="Search" 
+                    Click="btnSearch_Click">
+                        <Button.Resources>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="CornerRadius" Value="10"/>
+                            </Style>
+                        </Button.Resources>
+                    </Button>
+                </StackPanel>
+
+                <Button
                 Name="btnLogout"
-                Width="150"
-                Content="Log out" Click="btnLogout_Click"/>
-        </StackPanel>
+                Content="Log Out"
+                Click="btnLogout_Click"
+                Width="100"
+                Height="25"
+                Margin="0,10,0,0" Background="#FFFFD08C">
+                    <Button.Resources>
+                        <Style TargetType="{x:Type Border}">
+                            <Setter Property="CornerRadius" Value="10"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+            </StackPanel>
+            <Label
+                Grid.Column="2"
+                Grid.ColumnSpan="3"
+                Name="lblcRName"
+                Foreground="#FFFF9800"
+                FontSize="25"
+                FontWeight="Medium"
+                HorizontalAlignment="Left"
+                Content="spagetti och köttfärssås"/>
+
+            <TextBox 
+                Grid.Column="2"
+                Grid.Row="1"
+                Foreground="#FFFF9800"
+                Background="Transparent"
+                BorderThickness="0"
+                FontSize="16"
+                FontStyle="Italic"
+                FontWeight="Medium"
+                TextWrapping="Wrap"
+                Name="tbcRTags" Grid.ColumnSpan="2"/>
+            <Image 
+                Name="cRecipeimage"
+                Grid.Row="1"
+                Grid.Column="4"/>
+            <TextBox 
+                Grid.Column="2"
+                Grid.Row="3"
+                Foreground="#FFFF9800"
+                Background="Transparent"
+                FontSize="18"
+                BorderThickness="0"
+                FontWeight="Medium"
+                TextWrapping="Wrap"
+                Name ="tbcRIngredients" Grid.ColumnSpan="2" />
+            <TextBox 
+                Grid.Column="4"
+                Grid.Row="3"
+                BorderThickness="0"
+                Foreground="#FFFF9800"
+                Background="Transparent"
+                FontSize="18"
+                FontWeight="Medium"
+                TextWrapping="Wrap"
+                Name ="tbcRSteps"/>
+
+        </Grid>
     </Grid>
 </Window>

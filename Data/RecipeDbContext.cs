@@ -32,6 +32,7 @@ namespace YellowCarrot.Data
                 RecipeId = 1,
                 Name = "Darth Vader's Bolognese",
                 UserId = 4,
+                picUrl = "https://api.deepai.org/job-view-file/a4176b6f-e798-4a6e-90fd-53e95346c4be/outputs/output.jpg"
             });
             modelBuilder.Entity<Ingredient>().HasData(
                 new Ingredient()
@@ -88,6 +89,7 @@ namespace YellowCarrot.Data
                 RecipeId = 2,
                 Name = "Lembas bread",
                 UserId = 3,
+                picUrl = "http://4.bp.blogspot.com/_cd6_MFUGTUE/SU6yFC_7eHI/AAAAAAAAAII/dgbwkYf3cZs/w1200-h630-p-k-no-nu/_DSC6981.jpg"
             });
             modelBuilder.Entity<Ingredient>().HasData(
                 new Ingredient()

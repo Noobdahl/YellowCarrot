@@ -1,6 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Media.Imaging;
 using YellowCarrot.Data;
 using YellowCarrot.Models;
 using YellowCarrot.Repositories;
@@ -94,8 +96,6 @@ namespace YellowCarrot
                         uow.SaveChanges();
                     }
                     LoadRecipeListview("");
-                    MessageBox.Show("Successfully deleted!");
-
                 }
                 else
                     MessageBox.Show("This recipe does not belong to you, cannot delete!");
@@ -124,12 +124,59 @@ namespace YellowCarrot
         private void lvRecipes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ToggleButtons(true);
+            PreviewCurrentRecipe();
         }
 
         private void btnLogout_Click(object sender, RoutedEventArgs e)
         {
             this.Owner.Show();
             this.Close();
+        }
+        private void PreviewCurrentRecipe()
+        {
+            if (lvRecipes.SelectedItem == null)
+            {
+                return;
+            }
+            ListViewItem? item = lvRecipes.SelectedItem as ListViewItem;
+            Recipe? cRecipe = item.Tag as Recipe;
+            if (cRecipe != null)
+            {
+                //Loading name
+                lblcRName.Content = cRecipe.Name;
+                //Loading picture
+                try
+                {
+                    var uri = new Uri(cRecipe.picUrl);
+                    var bitmap = new BitmapImage(uri);
+                    cRecipeimage.Source = bitmap;
+                }
+                catch (Exception ex)
+                {
+                    cRecipeimage.Source = new BitmapImage(new Uri($@"/Images/yclogo.png", UriKind.Relative));
+                }
+                //Loading tags
+                tbcRTags.Clear();
+                tbcRTags.Text = "Tags:\n";
+                foreach (Tag tag in cRecipe.Tags)
+                {
+                    tbcRTags.Text += $"#{tag.Name} ";
+                }
+                //Loading Ingredients
+                tbcRIngredients.Clear();
+                tbcRIngredients.Text = "Ingredients:\n";
+                foreach (Ingredient ingredient in cRecipe.Ingredients)
+                {
+                    tbcRIngredients.Text += $"{ingredient.Quantity} - {ingredient.Name}\n";
+                }
+                //Loading Steps
+                tbcRSteps.Clear();
+                tbcRSteps.Text = "Steps:\n";
+                foreach (Step step in cRecipe.Steps)
+                {
+                    tbcRSteps.Text += $"{step.Order}. {step.Description}\n";
+                }
+            }
         }
     }
 }

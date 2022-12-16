@@ -2,10 +2,12 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace YellowCarrot.Migrations.RecipeDb
 {
     /// <inheritdoc />
-    public partial class newInitial : Migration
+    public partial class AddedPicUrlToRecipe : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +19,8 @@ namespace YellowCarrot.Migrations.RecipeDb
                     RecipeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: false)
+                    UserId = table.Column<int>(type: "int", nullable: false),
+                    picUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -99,6 +102,56 @@ namespace YellowCarrot.Migrations.RecipeDb
                         principalTable: "Tags",
                         principalColumn: "Name",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Recipes",
+                columns: new[] { "RecipeId", "Name", "UserId", "picUrl" },
+                values: new object[,]
+                {
+                    { 1, "Darth Vader's Bolognese", 4, null },
+                    { 2, "Lembas bread", 3, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Tags",
+                column: "Name",
+                values: new object[]
+                {
+                    "4/5",
+                    "foodForTravels"
+                });
+
+            migrationBuilder.InsertData(
+                table: "Ingredients",
+                columns: new[] { "IngredientId", "Name", "Quantity", "RecipeId" },
+                values: new object[,]
+                {
+                    { 1, "Spaghetti", "250g", 1 },
+                    { 2, "Bolognese", "100g", 1 },
+                    { 3, "Ketchup", "1 line", 1 },
+                    { 4, "Elven bread", "200g", 2 },
+                    { 5, "Mallorn leaves", "3", 2 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "RecipeTag",
+                columns: new[] { "RecipesRecipeId", "TagsName" },
+                values: new object[,]
+                {
+                    { 1, "4/5" },
+                    { 2, "foodForTravels" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Steps",
+                columns: new[] { "StepId", "Description", "Order", "RecipeId" },
+                values: new object[,]
+                {
+                    { 1, "Use the force.", 1, 1 },
+                    { 2, "Draw a lightsaber with ketchup.", 2, 1 },
+                    { 3, "Ask any elf for bread.", 1, 2 },
+                    { 4, "Wrap bread in leaves.", 2, 2 }
                 });
 
             migrationBuilder.CreateIndex(

@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:YellowCarrot"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
-        Title="Sign in" Height="250" Width="300">
+        Title="Sign in" Height="600" Width="800 ">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"/>
@@ -18,25 +18,92 @@
             <RowDefinition Height="*"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/YellowCarrot;component/Images/background.png"/>
+        </Grid.Background>
         <StackPanel
             Grid.Column="1"
-            Grid.Row="1">
+            Grid.Row="1"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center">
+            <StackPanel 
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                Margin="30">
+                <Label 
+                    Content="Yellow"
+                    FontSize="70"
+                    Foreground="#FFFF9800"
+                    VerticalAlignment="Center" FontFamily="Brussels"/>
+                <Image 
+                   Name="imageLogo" 
+                   Source="/YellowCarrot;component/Images/ycLogo.png"
+                   Height="150"/>
+                <Label 
+                    Content="Carrot"
+                    FontSize="70"
+                    VerticalAlignment="Center" Foreground="#FFFF9800" FontFamily="Brussels"/>
+            </StackPanel>
             <Label
+                Foreground="#FFFF9800"
+                FontSize="20"
+                FontWeight="Medium"
+                HorizontalAlignment="Center"
                 Content="Username:"/>
             <TextBox
                 Name="tbUsername"
+                Width="200" 
+                FontSize="20"
+                FontWeight="Medium"
+                Foreground="#FFFF9800"
+                BorderThickness="0,0,0,3"
+                BorderBrush="#FFFF9800"
+                Background="Transparent"
+                
                 />
             <Label
+                Foreground="#FFFF9800"
+                FontSize="20"
+                FontWeight="Medium"
+                HorizontalAlignment="Center"
                 Content="Password:"/>
             <PasswordBox
                 Name="pbPassword"
+                FontSize="20"
+                FontWeight="Medium"
+                Foreground="#FFFF9800"
+                BorderThickness="0,0,0,3"
+                BorderBrush="#FFFF9800"
+                Background="Transparent"
+                Width="200"
                 />
             <Button
                 Name="btnLogin"
-                Content="Login" Click="btnLogin_Click"/>
+                Content="Login" 
+                Click="btnLogin_Click"
+                Width="120"
+                Height="30"
+                VerticalContentAlignment="Center"
+                Margin="0,10,0,0" Background="#FFFFD08C">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
             <Button
                 Name="btnRegister"
-                Content="Register" Click="btnRegister_Click"/>
+                Content="Register"
+                Click="btnRegister_Click"
+                Width="100"
+                Height="25"
+                Margin="0,10,0,0" Background="#FFFFD08C">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="10"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
         </StackPanel>
     </Grid>
 </Window>

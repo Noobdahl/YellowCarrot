@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using YellowCarrot.Data;
 using YellowCarrot.Models;
 using YellowCarrot.Repositories;
@@ -36,7 +38,8 @@ namespace YellowCarrot
                     Name = tbRecipeName.Text,
                     UserId = loginId,
                     Steps = GetStepList(),
-                    Ingredients = GetIngredientsList()
+                    Ingredients = GetIngredientsList(),
+                    picUrl = tbURL.Text.Trim()
                 };
                 foreach (Tag tag in GetTagList())
                 {
@@ -173,6 +176,13 @@ namespace YellowCarrot
         private void btnRemoveStep_Click(object sender, RoutedEventArgs e)
         {
             lvSteps.Items.Remove(lvSteps.SelectedItem);
+        }
+
+        private void btnLoadImage_Click(object sender, RoutedEventArgs e)
+        {
+            var uri = new Uri(tbURL.Text);
+            var bitmap = new BitmapImage(uri);
+            image.Source = bitmap;
         }
     }
 }

@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Media;
+using System.Windows.Media.Imaging;
 using YellowCarrot.Data;
 using YellowCarrot.Models;
 using YellowCarrot.Repositories;
@@ -30,6 +32,17 @@ namespace YellowCarrot
 
         private void FillInformation(Recipe cRecipe)
         {
+            try
+            {
+                var uri = new Uri(cRecipe.picUrl);
+                var bitmap = new BitmapImage(uri);
+                image.Source = bitmap;
+            }
+            catch (Exception ex)
+            {
+                image.Source = new BitmapImage(new Uri($@"/Images/yclogo.png", UriKind.Relative));
+            }
+            tbURL.Text = cRecipe.picUrl;
             tbRecipeName.Text = cRecipe.Name;
             foreach (Tag tag in cRecipe.Tags)
             {
@@ -81,6 +94,7 @@ namespace YellowCarrot
                             dbRecipe.Tags.Add(tag);
                         }
                     }
+                    dbRecipe.picUrl = tbURL.Text.Trim();
                     dbRecipe.Name = tbRecipeName.Text;
                     dbRecipe.Steps = GetStepList();
                     dbRecipe.Ingredients = GetIngredientsList();
@@ -118,6 +132,8 @@ namespace YellowCarrot
                 btnRemoveIngredient.IsEnabled = true;
                 lvSteps.IsEnabled = true;
                 btnRemoveStep.IsEnabled = true;
+                tbURL.IsEnabled = true;
+                btnLoadImage.IsEnabled = true;
             }
             else
                 MessageBox.Show("You can only edit your own recipes.");
@@ -231,6 +247,19 @@ namespace YellowCarrot
         private void btnRemoveStep_Click(object sender, RoutedEventArgs e)
         {
             lvSteps.Items.Remove(lvSteps.SelectedItem);
+        }
+        private void btnLoadImage_Click(object sender, RoutedEventArgs e)
+        {
+            try
+            {
+                var uri = new Uri(tbURL.Text);
+                var bitmap = new BitmapImage(uri);
+                image.Source = bitmap;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Couldn't find image in this url.");
+            }
         }
     }
 }

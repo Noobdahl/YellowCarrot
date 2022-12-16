@@ -6,22 +6,27 @@
         xmlns:local="clr-namespace:YellowCarrot"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
         Title="Details" Height="430" Width="500">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="20"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="0.5*"/>
             <ColumnDefinition Width="0.5*"/>
-            <ColumnDefinition Width="25"/>
+            <ColumnDefinition Width="20"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="20"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="0.2*"/>
+            <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
+        <Grid.Background>
+            <ImageBrush ImageSource="/YellowCarrot;component/Images/background.png"/>
+        </Grid.Background>
 
         <TabControl Grid.Column="1" Grid.Row="1"
                     Grid.ColumnSpan="4"
@@ -141,22 +146,74 @@
                 </StackPanel>
             </TabItem>
 
+            <!--tab 4-->
+            <TabItem Header="Picture" Height="20" VerticalAlignment="Top">
+                <StackPanel HorizontalAlignment="Center">
+                    <Label Content="Insert URL:"/>
+                    <TextBox
+                        Name="tbURL"
+                        IsEnabled="False"
+                        Width="200"
+                        TextWrapping="Wrap"
+                        Height="20"
+                        Margin="5"/>
+                    <Button Name="btnLoadImage"
+                            IsEnabled="False"
+                            Content="Load Image"
+                            Width="100" Click="btnLoadImage_Click"/>
+                    <Image Name="image"
+                           Margin="10"
+                           Height="200"
+                           />
+                </StackPanel>
+            </TabItem>
+
         </TabControl>
         <Button
             Name="btnSave"
+            Grid.Column="2"
             Visibility="Hidden"
-            Grid.Column="3"
+            Grid.Row="3"
             Margin="3"
-            Content="Save" Click="btnSave_Click"/>
+            FontWeight="Medium"
+            VerticalContentAlignment="Center"
+            Background="#FFFFD08C"
+            Content="Save" Click="btnSave_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <Button
             Name="btnEdit"
-            Grid.Column="3"
+            Grid.Column="2"
+            Grid.Row="3"
             Margin="3"
-            Content="Edit" Click="btnEdit_Click"/>
+            FontWeight="Medium"
+            VerticalContentAlignment="Center"
+            Background="#FFFFD08C"
+            Content="Edit" Click="btnEdit_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
         <Button
             Name="btnCancel"
             Grid.Column="4"
+            Grid.Row="3"
             Margin="3"
-            Content="Cancel" Click="btnCancel_Click"/>
+            FontWeight="Medium"
+            VerticalContentAlignment="Center"
+            Background="#FFFFD08C"
+            Content="Cancel" Click="btnCancel_Click">
+            <Button.Resources>
+                <Style TargetType="{x:Type Border}">
+                    <Setter Property="CornerRadius" Value="10"/>
+                </Style>
+            </Button.Resources>
+        </Button>
     </Grid>
 </Window>

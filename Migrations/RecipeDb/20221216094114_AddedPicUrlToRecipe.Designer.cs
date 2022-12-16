@@ -11,8 +11,8 @@ using YellowCarrot.Data;
 namespace YellowCarrot.Migrations.RecipeDb
 {
     [DbContext(typeof(RecipeDbContext))]
-    [Migration("20221215200640_TryingSeedWithTag")]
-    partial class TryingSeedWithTag
+    [Migration("20221216094114_AddedPicUrlToRecipe")]
+    partial class AddedPicUrlToRecipe
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,6 +43,11 @@ namespace YellowCarrot.Migrations.RecipeDb
                         {
                             RecipesRecipeId = 1,
                             TagsName = "4/5"
+                        },
+                        new
+                        {
+                            RecipesRecipeId = 2,
+                            TagsName = "foodForTravels"
                         });
                 });
 
@@ -80,6 +85,34 @@ namespace YellowCarrot.Migrations.RecipeDb
                             Name = "Spaghetti",
                             Quantity = "250g",
                             RecipeId = 1
+                        },
+                        new
+                        {
+                            IngredientId = 2,
+                            Name = "Bolognese",
+                            Quantity = "100g",
+                            RecipeId = 1
+                        },
+                        new
+                        {
+                            IngredientId = 3,
+                            Name = "Ketchup",
+                            Quantity = "1 line",
+                            RecipeId = 1
+                        },
+                        new
+                        {
+                            IngredientId = 4,
+                            Name = "Elven bread",
+                            Quantity = "200g",
+                            RecipeId = 2
+                        },
+                        new
+                        {
+                            IngredientId = 5,
+                            Name = "Mallorn leaves",
+                            Quantity = "3",
+                            RecipeId = 2
                         });
                 });
 
@@ -99,6 +132,9 @@ namespace YellowCarrot.Migrations.RecipeDb
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
+                    b.Property<string>("picUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("RecipeId");
 
                     b.ToTable("Recipes");
@@ -108,6 +144,12 @@ namespace YellowCarrot.Migrations.RecipeDb
                         {
                             RecipeId = 1,
                             Name = "Darth Vader's Bolognese",
+                            UserId = 4
+                        },
+                        new
+                        {
+                            RecipeId = 2,
+                            Name = "Lembas bread",
                             UserId = 3
                         });
                 });
@@ -144,6 +186,27 @@ namespace YellowCarrot.Migrations.RecipeDb
                             Description = "Use the force.",
                             Order = 1,
                             RecipeId = 1
+                        },
+                        new
+                        {
+                            StepId = 2,
+                            Description = "Draw a lightsaber with ketchup.",
+                            Order = 2,
+                            RecipeId = 1
+                        },
+                        new
+                        {
+                            StepId = 3,
+                            Description = "Ask any elf for bread.",
+                            Order = 1,
+                            RecipeId = 2
+                        },
+                        new
+                        {
+                            StepId = 4,
+                            Description = "Wrap bread in leaves.",
+                            Order = 2,
+                            RecipeId = 2
                         });
                 });
 
@@ -161,6 +224,10 @@ namespace YellowCarrot.Migrations.RecipeDb
                         new
                         {
                             Name = "4/5"
+                        },
+                        new
+                        {
+                            Name = "foodForTravels"
                         });
                 });
 

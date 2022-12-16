@@ -129,6 +129,9 @@ namespace YellowCarrot.Migrations.RecipeDb
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
+                    b.Property<string>("picUrl")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("RecipeId");
 
                     b.ToTable("Recipes");
