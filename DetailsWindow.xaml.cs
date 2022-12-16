@@ -24,7 +24,7 @@ namespace YellowCarrot
             using (RecipeDbContext context = new())
             {
                 UnitOfWork uow = new(context);
-                Recipe cRecipe = uow.RecipeRepo.GetRecipeById(cRecipeId);
+                Recipe? cRecipe = uow.RecipeRepo.GetRecipeById(cRecipeId);
                 FillInformation(cRecipe);
             }
             this.canEdit = canEdit;
@@ -38,7 +38,7 @@ namespace YellowCarrot
                 var bitmap = new BitmapImage(uri);
                 image.Source = bitmap;
             }
-            catch (Exception ex)
+            catch
             {
                 image.Source = new BitmapImage(new Uri($@"/Images/yclogo.png", UriKind.Relative));
             }
@@ -75,10 +75,29 @@ namespace YellowCarrot
                 MessageBox.Show("You need to name your recipe.");
                 return;
             }
+            string missing = "";
+            if (lvIngredients.Items.Count < 1)
+                missing += "- Ingredients\n";
+            if (lvSteps.Items.Count < 1)
+                missing += "- Steps\n";
+            if (lvTags.Items.Count < 1)
+                missing += "- Tags\n";
+            if (lvIngredients.Items.Count < 1 || lvSteps.Items.Count < 1 || lvTags.Items.Count < 1)
+            {
+                if (MessageBox.Show($"This recipe is missing:\n\n{missing}\n\nDo you still want to continue?", "Delete recipe", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                //No
+                {
+                    return;
+                }
+                else
+                //Yes
+                {
+                }
+            }
             using (RecipeDbContext context = new())
             {
                 UnitOfWork uow = new(context);
-                Recipe dbRecipe = uow.RecipeRepo.GetRecipeById(cRecipeId);
+                Recipe? dbRecipe = uow.RecipeRepo.GetRecipeById(cRecipeId);
                 if (dbRecipe != null)
                 {
                     dbRecipe.Tags.Clear();
@@ -205,7 +224,7 @@ namespace YellowCarrot
             List<Ingredient> list = new();
             foreach (ListViewItem item in lvIngredients.Items)
             {
-                Ingredient ingredient = item.Tag as Ingredient;
+                Ingredient? ingredient = item.Tag as Ingredient;
                 list.Add(ingredient);
             }
             return list;
@@ -216,7 +235,7 @@ namespace YellowCarrot
             List<Step> list = new();
             foreach (ListViewItem item in lvSteps.Items)
             {
-                Step step = item.Tag as Step;
+                Step? step = item.Tag as Step;
                 step.Order = order;
                 order++;
                 list.Add(step);
@@ -228,7 +247,7 @@ namespace YellowCarrot
             List<Tag> list = new();
             foreach (ListViewItem item in lvTags.Items)
             {
-                Tag tag = item.Tag as Tag;
+                Tag? tag = item.Tag as Tag;
                 list.Add(tag);
             }
             return list;
@@ -256,7 +275,7 @@ namespace YellowCarrot
                 var bitmap = new BitmapImage(uri);
                 image.Source = bitmap;
             }
-            catch (Exception ex)
+            catch
             {
                 MessageBox.Show("Couldn't find image in this url.");
             }

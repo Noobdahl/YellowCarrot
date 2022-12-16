@@ -2,10 +2,12 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace YellowCarrot.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialPlusSeed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -23,6 +25,17 @@ namespace YellowCarrot.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Users", x => x.UserId);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "UserId", "IsAdmin", "Name", "Password" },
+                values: new object[,]
+                {
+                    { 1, true, "admin", "pKj8ZhaWCE7Qed6qJOrYoA==" },
+                    { 2, false, "user", "pKj8ZhaWCE7Qed6qJOrYoA==" },
+                    { 3, false, "Micke", "YlLIEhPWqLis4l23Lcbx3w==" },
+                    { 4, false, "Albin", "S0jZbC2T5ClvvM2LddCdZQ==" }
                 });
         }
 

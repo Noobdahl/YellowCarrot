@@ -30,6 +30,26 @@ namespace YellowCarrot
                 MessageBox.Show("You need to name your recipe.");
                 return;
             }
+            string missing = "";
+            if (lvIngredients.Items.Count < 1)
+                missing += "- Ingredients\n";
+            if (lvSteps.Items.Count < 1)
+                missing += "- Steps\n";
+            if (lvTags.Items.Count < 1)
+                missing += "- Tags\n";
+            if (lvIngredients.Items.Count < 1 || lvSteps.Items.Count < 1 || lvTags.Items.Count < 1)
+            {
+                if (MessageBox.Show($"This recipe is missing:\n\n{missing}\n\nDo you still want to continue?", "Delete recipe", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
+                //No
+                {
+                    return;
+                }
+                else
+                //Yes
+                {
+                }
+            }
+
             using (RecipeDbContext context = new())
             {
                 UnitOfWork uow = new(context);

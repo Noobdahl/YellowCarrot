@@ -85,20 +85,28 @@ namespace YellowCarrot
             //Yes
             {
                 ToggleButtons(false);
-                ListViewItem sItem = lvRecipes.SelectedItem as ListViewItem;
-                Recipe sRecipe = sItem.Tag as Recipe;
-                if (sRecipe.UserId == loginId || isAdmin)
+                try
                 {
-                    using (RecipeDbContext context = new())
+
+                    ListViewItem? sItem = lvRecipes.SelectedItem as ListViewItem;
+                    Recipe? sRecipe = sItem.Tag as Recipe;
+                    if (sRecipe.UserId == loginId || isAdmin)
                     {
-                        UnitOfWork uow = new(context);
-                        uow.RecipeRepo.DeleteRecipe(sRecipe);
-                        uow.SaveChanges();
+                        using (RecipeDbContext context = new())
+                        {
+                            UnitOfWork uow = new(context);
+                            uow.RecipeRepo.DeleteRecipe(sRecipe);
+                            uow.SaveChanges();
+                        }
+                        LoadRecipeListview("");
                     }
-                    LoadRecipeListview("");
+                    else
+                        MessageBox.Show("This recipe does not belong to you, cannot delete!");
                 }
-                else
-                    MessageBox.Show("This recipe does not belong to you, cannot delete!");
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Oops, something went wrong!\n" + ex.Message);
+                }
             }
         }
 
@@ -151,7 +159,7 @@ namespace YellowCarrot
                     var bitmap = new BitmapImage(uri);
                     cRecipeimage.Source = bitmap;
                 }
-                catch (Exception ex)
+                catch
                 {
                     cRecipeimage.Source = new BitmapImage(new Uri($@"/Images/yclogo.png", UriKind.Relative));
                 }

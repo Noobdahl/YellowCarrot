@@ -7,7 +7,7 @@
 namespace YellowCarrot.Migrations.RecipeDb
 {
     /// <inheritdoc />
-    public partial class AddedPicUrlToRecipe : Migration
+    public partial class InitialPlusSeed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -109,8 +109,8 @@ namespace YellowCarrot.Migrations.RecipeDb
                 columns: new[] { "RecipeId", "Name", "UserId", "picUrl" },
                 values: new object[,]
                 {
-                    { 1, "Darth Vader's Bolognese", 4, null },
-                    { 2, "Lembas bread", 3, null }
+                    { 1, "Darth Vader's Bolognese", 4, "https://api.deepai.org/job-view-file/a4176b6f-e798-4a6e-90fd-53e95346c4be/outputs/output.jpg" },
+                    { 2, "Lembas bread", 3, "http://4.bp.blogspot.com/_cd6_MFUGTUE/SU6yFC_7eHI/AAAAAAAAAII/dgbwkYf3cZs/w1200-h630-p-k-no-nu/_DSC6981.jpg" }
                 });
 
             migrationBuilder.InsertData(

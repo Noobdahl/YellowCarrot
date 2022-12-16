@@ -18,11 +18,14 @@ namespace YellowCarrot.Repositories
         {
             return context.Recipes.Include(r => r.Ingredients).Include(r => r.Steps).Include(r => r.Tags).ToList();
         }
+
+        //Creates a new recipe in database
         public void CreateNewRecipe(Recipe recipe)
         {
             context.Recipes.Add(recipe);
         }
 
+        //Deletes a recipe from database
         public void DeleteRecipe(Recipe sRecipe)
         {
             context.Recipes.Remove(sRecipe);
