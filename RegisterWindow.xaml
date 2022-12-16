@@ -81,6 +81,7 @@
                 />
             <Button
                 Name="btnRegister"
+                IsDefault="True"
                 Content="Register" 
                 Click="btnRegister_Click"
                 Width="120"

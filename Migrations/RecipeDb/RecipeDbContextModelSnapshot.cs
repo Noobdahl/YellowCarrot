@@ -45,6 +45,16 @@ namespace YellowCarrot.Migrations.RecipeDb
                         {
                             RecipesRecipeId = 2,
                             TagsName = "foodForTravels"
+                        },
+                        new
+                        {
+                            RecipesRecipeId = 3,
+                            TagsName = "gin"
+                        },
+                        new
+                        {
+                            RecipesRecipeId = 3,
+                            TagsName = "neutralTonic"
                         });
                 });
 
@@ -110,6 +120,41 @@ namespace YellowCarrot.Migrations.RecipeDb
                             Name = "Mallorn leaves",
                             Quantity = "3",
                             RecipeId = 2
+                        },
+                        new
+                        {
+                            IngredientId = 6,
+                            Name = "Hellström Gin",
+                            Quantity = "5cl",
+                            RecipeId = 3
+                        },
+                        new
+                        {
+                            IngredientId = 7,
+                            Name = "Neutral Tonic (ekobryggeriet origianal)",
+                            Quantity = "10cl",
+                            RecipeId = 3
+                        },
+                        new
+                        {
+                            IngredientId = 8,
+                            Name = "Is",
+                            Quantity = "Mycket",
+                            RecipeId = 3
+                        },
+                        new
+                        {
+                            IngredientId = 9,
+                            Name = "Timjan",
+                            Quantity = "Ett par kvistar",
+                            RecipeId = 3
+                        },
+                        new
+                        {
+                            IngredientId = 10,
+                            Name = "Äpple",
+                            Quantity = "Ett klyfta",
+                            RecipeId = 3
                         });
                 });
 
@@ -142,7 +187,7 @@ namespace YellowCarrot.Migrations.RecipeDb
                             RecipeId = 1,
                             Name = "Darth Vader's Bolognese",
                             UserId = 4,
-                            picUrl = "https://api.deepai.org/job-view-file/a4176b6f-e798-4a6e-90fd-53e95346c4be/outputs/output.jpg"
+                            picUrl = "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/the-best-spaghetti-bolognese-7e83155.jpg?quality=90&webp=true&resize=375,341"
                         },
                         new
                         {
@@ -150,6 +195,13 @@ namespace YellowCarrot.Migrations.RecipeDb
                             Name = "Lembas bread",
                             UserId = 3,
                             picUrl = "http://4.bp.blogspot.com/_cd6_MFUGTUE/SU6yFC_7eHI/AAAAAAAAAII/dgbwkYf3cZs/w1200-h630-p-k-no-nu/_DSC6981.jpg"
+                        },
+                        new
+                        {
+                            RecipeId = 3,
+                            Name = "Gin & Tonic med äpple",
+                            UserId = 5,
+                            picUrl = "https://i.ibb.co/fHtXgjx/image.png"
                         });
                 });
 
@@ -206,6 +258,48 @@ namespace YellowCarrot.Migrations.RecipeDb
                             Description = "Wrap bread in leaves.",
                             Order = 2,
                             RecipeId = 2
+                        },
+                        new
+                        {
+                            StepId = 5,
+                            Description = "Ta ett kallt glas.",
+                            Order = 1,
+                            RecipeId = 3
+                        },
+                        new
+                        {
+                            StepId = 6,
+                            Description = "Fyll upp glaset med mycket is.",
+                            Order = 2,
+                            RecipeId = 3
+                        },
+                        new
+                        {
+                            StepId = 7,
+                            Description = "Tillsätt gin.",
+                            Order = 3,
+                            RecipeId = 3
+                        },
+                        new
+                        {
+                            StepId = 8,
+                            Description = "Tillsätt tonic.",
+                            Order = 4,
+                            RecipeId = 3
+                        },
+                        new
+                        {
+                            StepId = 9,
+                            Description = "Sätt i ett par kvistar timjan.",
+                            Order = 5,
+                            RecipeId = 3
+                        },
+                        new
+                        {
+                            StepId = 10,
+                            Description = "Lägg i en klyfta äpple.",
+                            Order = 6,
+                            RecipeId = 3
                         });
                 });
 
@@ -227,6 +321,14 @@ namespace YellowCarrot.Migrations.RecipeDb
                         new
                         {
                             Name = "foodForTravels"
+                        },
+                        new
+                        {
+                            Name = "gin"
+                        },
+                        new
+                        {
+                            Name = "neutralTonic"
                         });
                 });
 

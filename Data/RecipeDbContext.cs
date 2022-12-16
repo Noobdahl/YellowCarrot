@@ -32,7 +32,7 @@ namespace YellowCarrot.Data
                 RecipeId = 1,
                 Name = "Darth Vader's Bolognese",
                 UserId = 4,
-                picUrl = "https://api.deepai.org/job-view-file/a4176b6f-e798-4a6e-90fd-53e95346c4be/outputs/output.jpg"
+                picUrl = "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/the-best-spaghetti-bolognese-7e83155.jpg?quality=90&webp=true&resize=375,341"
             });
             modelBuilder.Entity<Ingredient>().HasData(
                 new Ingredient()
@@ -83,6 +83,9 @@ namespace YellowCarrot.Data
                     RecipesRecipeId = 1,
                 });
 
+
+
+
             //Recipe 2
             modelBuilder.Entity<Recipe>().HasData(new Recipe()
             {
@@ -131,6 +134,118 @@ namespace YellowCarrot.Data
                 {
                     TagsName = "foodForTravels",
                     RecipesRecipeId = 2,
+                });
+
+
+
+
+            //Recipe 3
+            modelBuilder.Entity<Recipe>().HasData(new Recipe()
+            {
+                RecipeId = 3,
+                Name = "Gin & Tonic med äpple",
+                UserId = 5,
+                picUrl = "https://i.ibb.co/fHtXgjx/image.png"
+            });
+            modelBuilder.Entity<Ingredient>().HasData(
+                new Ingredient()
+                {
+                    IngredientId = 6,
+                    Name = "Hellström Gin",
+                    Quantity = "5cl",
+                    RecipeId = 3,
+                },
+                new Ingredient()
+                {
+                    IngredientId = 7,
+                    Name = "Neutral Tonic (ekobryggeriet original)",
+                    Quantity = "10cl",
+                    RecipeId = 3,
+                },
+                new Ingredient()
+                {
+                    IngredientId = 8,
+                    Name = "Is",
+                    Quantity = "Mycket",
+                    RecipeId = 3,
+                },
+                new Ingredient()
+                {
+                    IngredientId = 9,
+                    Name = "Timjan",
+                    Quantity = "Ett par kvistar",
+                    RecipeId = 3,
+                },
+                new Ingredient()
+                {
+                    IngredientId = 10,
+                    Name = "Äpple",
+                    Quantity = "Ett klyfta",
+                    RecipeId = 3,
+                }
+                );
+            modelBuilder.Entity<Step>().HasData(new Step()
+            {
+                StepId = 5,
+                Order = 1,
+                Description = "Ta ett kallt glas.",
+                RecipeId = 3,
+            },
+            new Step()
+            {
+                StepId = 6,
+                Order = 2,
+                Description = "Fyll upp glaset med mycket is.",
+                RecipeId = 3,
+            },
+            new Step()
+            {
+                StepId = 7,
+                Order = 3,
+                Description = "Tillsätt gin.",
+                RecipeId = 3,
+            },
+            new Step()
+            {
+                StepId = 8,
+                Order = 4,
+                Description = "Tillsätt tonic.",
+                RecipeId = 3,
+            },
+            new Step()
+            {
+                StepId = 9,
+                Order = 5,
+                Description = "Sätt i ett par kvistar timjan.",
+                RecipeId = 3,
+            },
+            new Step()
+            {
+                StepId = 10,
+                Order = 6,
+                Description = "Lägg i en klyfta äpple.",
+                RecipeId = 3,
+            }
+            );
+            modelBuilder.Entity<Tag>().HasData(
+                new Tag()
+            {
+                Name = "gin"
+            },
+            new Tag()
+            {
+                Name = "neutralTonic"
+            });
+            modelBuilder.Entity("RecipeTag").HasData(
+                new
+                {
+                    TagsName = "gin",
+                    RecipesRecipeId = 3,
+                },
+                new
+                {
+                    TagsName = "neutralTonic",
+                    RecipesRecipeId = 3,
                 });
         }
     }

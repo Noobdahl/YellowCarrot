@@ -79,6 +79,7 @@
                 />
             <Button
                 Name="btnLogin"
+                IsDefault="True" 
                 Content="Login" 
                 Click="btnLogin_Click"
                 Width="120"

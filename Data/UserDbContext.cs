@@ -54,6 +54,13 @@ namespace YellowCarrot.Data
                 Name = "Albin",
                 Password = "nibla",
                 IsAdmin = false,
+            }, 
+            new User()
+            {
+                UserId = 5,
+                Name = "Lars",
+                Password = "Bengtsson",
+                IsAdmin = false,
             });
         }
     }

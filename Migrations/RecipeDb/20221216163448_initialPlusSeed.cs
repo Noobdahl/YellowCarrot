@@ -109,8 +109,9 @@ namespace YellowCarrot.Migrations.RecipeDb
                 columns: new[] { "RecipeId", "Name", "UserId", "picUrl" },
                 values: new object[,]
                 {
-                    { 1, "Darth Vader's Bolognese", 4, "https://api.deepai.org/job-view-file/a4176b6f-e798-4a6e-90fd-53e95346c4be/outputs/output.jpg" },
-                    { 2, "Lembas bread", 3, "http://4.bp.blogspot.com/_cd6_MFUGTUE/SU6yFC_7eHI/AAAAAAAAAII/dgbwkYf3cZs/w1200-h630-p-k-no-nu/_DSC6981.jpg" }
+                    { 1, "Darth Vader's Bolognese", 4, "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/the-best-spaghetti-bolognese-7e83155.jpg?quality=90&webp=true&resize=375,341" },
+                    { 2, "Lembas bread", 3, "http://4.bp.blogspot.com/_cd6_MFUGTUE/SU6yFC_7eHI/AAAAAAAAAII/dgbwkYf3cZs/w1200-h630-p-k-no-nu/_DSC6981.jpg" },
+                    { 3, "Gin & Tonic med äpple", 5, "https://i.ibb.co/fHtXgjx/image.png" }
                 });
 
             migrationBuilder.InsertData(
@@ -119,7 +120,9 @@ namespace YellowCarrot.Migrations.RecipeDb
                 values: new object[]
                 {
                     "4/5",
-                    "foodForTravels"
+                    "foodForTravels",
+                    "gin",
+                    "neutralTonic"
                 });
 
             migrationBuilder.InsertData(
@@ -131,7 +134,12 @@ namespace YellowCarrot.Migrations.RecipeDb
                     { 2, "Bolognese", "100g", 1 },
                     { 3, "Ketchup", "1 line", 1 },
                     { 4, "Elven bread", "200g", 2 },
-                    { 5, "Mallorn leaves", "3", 2 }
+                    { 5, "Mallorn leaves", "3", 2 },
+                    { 6, "Hellström Gin", "5cl", 3 },
+                    { 7, "Neutral Tonic (ekobryggeriet origianal)", "10cl", 3 },
+                    { 8, "Is", "Mycket", 3 },
+                    { 9, "Timjan", "Ett par kvistar", 3 },
+                    { 10, "Äpple", "Ett klyfta", 3 }
                 });
 
             migrationBuilder.InsertData(
@@ -140,7 +148,9 @@ namespace YellowCarrot.Migrations.RecipeDb
                 values: new object[,]
                 {
                     { 1, "4/5" },
-                    { 2, "foodForTravels" }
+                    { 2, "foodForTravels" },
+                    { 3, "gin" },
+                    { 3, "neutralTonic" }
                 });
 
             migrationBuilder.InsertData(
@@ -151,7 +161,13 @@ namespace YellowCarrot.Migrations.RecipeDb
                     { 1, "Use the force.", 1, 1 },
                     { 2, "Draw a lightsaber with ketchup.", 2, 1 },
                     { 3, "Ask any elf for bread.", 1, 2 },
-                    { 4, "Wrap bread in leaves.", 2, 2 }
+                    { 4, "Wrap bread in leaves.", 2, 2 },
+                    { 5, "Ta ett kallt glas.", 1, 3 },
+                    { 6, "Fyll upp glaset med mycket is.", 2, 3 },
+                    { 7, "Tillsätt gin.", 3, 3 },
+                    { 8, "Tillsätt tonic.", 4, 3 },
+                    { 9, "Sätt i ett par kvistar timjan.", 5, 3 },
+                    { 10, "Lägg i en klyfta äpple.", 6, 3 }
                 });
 
             migrationBuilder.CreateIndex(

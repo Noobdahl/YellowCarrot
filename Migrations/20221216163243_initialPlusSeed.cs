@@ -35,7 +35,8 @@ namespace YellowCarrot.Migrations
                     { 1, true, "admin", "pKj8ZhaWCE7Qed6qJOrYoA==" },
                     { 2, false, "user", "pKj8ZhaWCE7Qed6qJOrYoA==" },
                     { 3, false, "Micke", "YlLIEhPWqLis4l23Lcbx3w==" },
-                    { 4, false, "Albin", "S0jZbC2T5ClvvM2LddCdZQ==" }
+                    { 4, false, "Albin", "S0jZbC2T5ClvvM2LddCdZQ==" },
+                    { 5, false, "Lars", "6If32EwDRymYsYbnLWj5Yw==" }
                 });
         }
 

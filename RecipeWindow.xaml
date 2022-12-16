@@ -104,6 +104,7 @@
                     Name="tbSearch"/>
                     <Button
                     Name="btnSearch"
+                    IsDefault="True"
                     Width="60"
                     Margin="5,5,0,0" 
                     Background="#FFFFD08C"

@@ -74,6 +74,13 @@ namespace YellowCarrot.Migrations
                             IsAdmin = false,
                             Name = "Albin",
                             Password = "S0jZbC2T5ClvvM2LddCdZQ=="
+                        },
+                        new
+                        {
+                            UserId = 5,
+                            IsAdmin = false,
+                            Name = "Lars",
+                            Password = "6If32EwDRymYsYbnLWj5Yw=="
                         });
                 });
 #pragma warning restore 612, 618
