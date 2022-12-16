@@ -138,8 +138,7 @@
                 Foreground="#FFFF9800"
                 FontSize="25"
                 FontWeight="Medium"
-                HorizontalAlignment="Left"
-                Content="spagetti och köttfärssås"/>
+                HorizontalAlignment="Left"/>
 
             <TextBox 
                 Grid.Column="2"

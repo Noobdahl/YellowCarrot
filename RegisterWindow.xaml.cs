@@ -25,7 +25,8 @@ namespace YellowCarrot
                 else if (pbPassword.Password.Count() < 4)
                     throw new Exception("Password must be atleast 4 characters long.");
                 else if (pbPassword.Password != pbConfirmPassword.Password)
-                    throw new Exception("Passwords does not match.");
+                    throw new Exception("Passwords do not match.");
+
                 User nUser = new()
                 {
                     Name = tbUsername.Text,
@@ -34,7 +35,10 @@ namespace YellowCarrot
                 };
                 using (UserDbContext context = new())
                 {
+                    //No UnitOfWork here because connection is to users-dB with encryption, not to recipe-dB
                     UserRepository u = new(context);
+
+                    //Sends user object to repo and returns true if user is successfully created in dB
                     if (u.AddUser(nUser))
                     {
                         this.Owner.Show();

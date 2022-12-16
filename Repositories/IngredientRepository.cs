@@ -10,6 +10,7 @@ namespace YellowCarrot.Repositories
         {
             this.context = context;
         }
+        //Recieves new ingredient, and adds it to dB - C in crud
         public void CreateNewIngredient(Ingredient nIngredient)
         {
             context.Ingredients.Add(nIngredient);

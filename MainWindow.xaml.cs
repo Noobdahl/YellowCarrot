@@ -14,7 +14,8 @@ namespace YellowCarrot
         {
             InitializeComponent();
 
-            //Removing intial delay for connection to DB.
+            //Creating a connection to dB, doing nothing really,
+            //just to remove initial delay when conecting first time.
             using (RecipeDbContext context = new())
                 {
                     UnitOfWork uow = new(context);
@@ -25,9 +26,6 @@ namespace YellowCarrot
                 UserRepository u = new(context);
                 u.GetUserNameFromId(1);
             }
-
-            tbUsername.Text = "Micke";
-            pbPassword.Password = "asd";
         }
 
         private void btnLogin_Click(object sender, RoutedEventArgs e)
@@ -36,7 +34,7 @@ namespace YellowCarrot
             {
                 UserRepository u = new(context);
 
-                //LoginUser gets the userobject in return
+                //LoginUser gets the userobject in return if match is found in dB
                 User? loggedInUser = u.LoginUser(tbUsername.Text, pbPassword.Password);
 
                 if (loggedInUser != null)
@@ -48,12 +46,13 @@ namespace YellowCarrot
                 }
                 else
                 {
-                    MessageBox.Show("Incorrecto!");
+                    MessageBox.Show("Wrong username or password...");
                 }
                 pbPassword.Clear();
             }
         }
 
+        //Open register window
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             RegisterWindow regWindow = new RegisterWindow();

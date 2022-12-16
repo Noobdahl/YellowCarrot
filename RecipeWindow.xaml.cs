@@ -24,29 +24,37 @@ namespace YellowCarrot
             LoadRecipeListview("");
         }
 
+        //Loads recipes into listview
         public void LoadRecipeListview(string s)
         {
+            ClearPreview();
             lvRecipes.Items.Clear();
             ToggleButtons(false);
             using (RecipeDbContext context = new())
             {
                 UnitOfWork uow = new(context);
+                //If no string is sent, gets all recipes
                 if (s == "")
                 {
+                    //Sends all recipes fetched to another method
                     AddRecipesToListView(uow.RecipeRepo.GetAllRecipes());
                 }
+                //Else gets recipes that matches result - see RecipeRepository's GetSearchResult
                 else
                 {
+                    //Sends all recipes fetched to another method - the searchmethod in RecipeRepository
                     AddRecipesToListView(uow.RecipeRepo.GetSearchResult(s));
                 }
             }
         }
+        //Enables/disables buttons depending on bool recieved
         private void ToggleButtons(bool toggle)
         {
             btnDelete.IsEnabled = toggle;
             btnDetails.IsEnabled = toggle;
         }
 
+        //Creates connection to both users-dB and recipes-dB to be able to print info in recipelist.
         private void AddRecipesToListView(List<Recipe> recipes)
         {
             using (UserDbContext context = new())
@@ -55,11 +63,14 @@ namespace YellowCarrot
                 using (RecipeDbContext _context = new())
                 {
                     UnitOfWork uow = new(_context);
+                    //Loops through all recipes previously fetched (based on search, with or without keyword)
                     foreach (Recipe recipe in recipes)
                     {
                         ListViewItem nItem = new();
+                        //Gets username from owner via userRepo, and gets tags via UnitOfWork
                         nItem.Content = $"{recipe.Name} - by {userRepo.GetUserNameFromId(recipe.UserId)}\n{uow.TagRepo.GetAllTagsFromRecipeById(recipe.RecipeId)}";
                         nItem.Tag = recipe;
+                        //Finally adding recipe to recipe listview
                         lvRecipes.Items.Add(nItem);
                     }
                 }
@@ -79,7 +90,7 @@ namespace YellowCarrot
             if (MessageBox.Show("Are you sure you want to delete this recipe?", "Delete recipe", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.No)
             //No
             {
-
+                //Does nothing, as a result of regret...
             }
             else
             //Yes
@@ -90,6 +101,8 @@ namespace YellowCarrot
 
                     ListViewItem? sItem = lvRecipes.SelectedItem as ListViewItem;
                     Recipe? sRecipe = sItem.Tag as Recipe;
+
+                    //Checks if user is owner of recipe or is admin
                     if (sRecipe.UserId == loginId || isAdmin)
                     {
                         using (RecipeDbContext context = new())
@@ -123,14 +136,17 @@ namespace YellowCarrot
             detailsWindow.Show();
             this.Hide();
         }
+
+        //Returns the current selected recipe
         private Recipe GetSelectedRecipe()
         {
-            ListViewItem sItem = lvRecipes.SelectedItem as ListViewItem;
+            ListViewItem? sItem = lvRecipes.SelectedItem as ListViewItem;
             return sItem.Tag as Recipe;
         }
 
         private void lvRecipes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //When recipe is clicked, enables buttons and previews recipe
             ToggleButtons(true);
             PreviewCurrentRecipe();
         }
@@ -140,19 +156,21 @@ namespace YellowCarrot
             this.Owner.Show();
             this.Close();
         }
+
+        //Runs every time selection is changed in recipe listview, and loads the preview on selected recipe
         private void PreviewCurrentRecipe()
         {
             if (lvRecipes.SelectedItem == null)
             {
                 return;
             }
-            ListViewItem? item = lvRecipes.SelectedItem as ListViewItem;
-            Recipe? cRecipe = item.Tag as Recipe;
+            Recipe? cRecipe = GetSelectedRecipe();
             if (cRecipe != null)
             {
                 //Loading name
                 lblcRName.Content = cRecipe.Name;
                 //Loading picture
+                cRecipeimage.Visibility = Visibility.Visible;
                 try
                 {
                     var uri = new Uri(cRecipe.picUrl);
@@ -161,6 +179,7 @@ namespace YellowCarrot
                 }
                 catch
                 {
+                    //Loading default icon if above fails
                     cRecipeimage.Source = new BitmapImage(new Uri($@"/Images/yclogo.png", UriKind.Relative));
                 }
                 //Loading tags
@@ -185,6 +204,15 @@ namespace YellowCarrot
                     tbcRSteps.Text += $"{step.Order}. {step.Description}\n";
                 }
             }
+        }
+        //Runs when listview is repopulated, after created recipes and updated recipes to hide the preview
+        private void ClearPreview()
+        {
+            tbcRIngredients.Clear();
+            tbcRSteps.Clear();
+            tbcRTags.Clear();
+            lblcRName.Content = "";
+            cRecipeimage.Visibility= Visibility.Hidden;
         }
     }
 }
