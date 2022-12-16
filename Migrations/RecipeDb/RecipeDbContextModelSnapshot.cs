@@ -131,7 +131,7 @@ namespace YellowCarrot.Migrations.RecipeDb
                         new
                         {
                             IngredientId = 7,
-                            Name = "Neutral Tonic (ekobryggeriet origianal)",
+                            Name = "Neutral Tonic (ekobryggeriet original)",
                             Quantity = "10cl",
                             RecipeId = 3
                         },

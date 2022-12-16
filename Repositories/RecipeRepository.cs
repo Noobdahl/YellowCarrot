@@ -25,7 +25,7 @@ namespace YellowCarrot.Repositories
             context.Recipes.Add(recipe);
         }
 
-        //Deletes a recipe from database, C in crud
+        //Deletes a recipe from database, D in crud
         public void DeleteRecipe(Recipe sRecipe)
         {
             context.Recipes.Remove(sRecipe);
@@ -45,7 +45,7 @@ namespace YellowCarrot.Repositories
                 //Gets all recipes with the matched tag
                 List<Recipe> list = context.Recipes.Where(r => r.Tags.Contains(tag)).ToList();
                 //Loops through recipes found by tag
-                foreach(Recipe recipe in list)
+                foreach (Recipe recipe in list)
                 {
                     //If recipe isn't already fetched by the name above (row 38)
                     if (!result.Contains(recipe))

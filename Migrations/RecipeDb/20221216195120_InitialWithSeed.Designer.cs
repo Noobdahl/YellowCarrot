@@ -11,8 +11,8 @@ using YellowCarrot.Data;
 namespace YellowCarrot.Migrations.RecipeDb
 {
     [DbContext(typeof(RecipeDbContext))]
-    [Migration("20221216163448_initialPlusSeed")]
-    partial class initialPlusSeed
+    [Migration("20221216195120_InitialWithSeed")]
+    partial class InitialWithSeed
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -134,7 +134,7 @@ namespace YellowCarrot.Migrations.RecipeDb
                         new
                         {
                             IngredientId = 7,
-                            Name = "Neutral Tonic (ekobryggeriet origianal)",
+                            Name = "Neutral Tonic (ekobryggeriet original)",
                             Quantity = "10cl",
                             RecipeId = 3
                         },

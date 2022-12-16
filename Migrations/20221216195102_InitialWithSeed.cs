@@ -7,7 +7,7 @@
 namespace YellowCarrot.Migrations
 {
     /// <inheritdoc />
-    public partial class initialPlusSeed : Migration
+    public partial class InitialWithSeed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

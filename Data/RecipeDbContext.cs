@@ -180,7 +180,7 @@ namespace YellowCarrot.Data
                 {
                     IngredientId = 10,
                     Name = "Äpple",
-                    Quantity = "Ett klyfta",
+                    Quantity = "En klyfta",
                     RecipeId = 3,
                 }
                 );
@@ -229,9 +229,9 @@ namespace YellowCarrot.Data
             );
             modelBuilder.Entity<Tag>().HasData(
                 new Tag()
-            {
-                Name = "gin"
-            },
+                {
+                    Name = "gin"
+                },
             new Tag()
             {
                 Name = "neutralTonic"

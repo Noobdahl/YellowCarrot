@@ -7,7 +7,7 @@
 namespace YellowCarrot.Migrations.RecipeDb
 {
     /// <inheritdoc />
-    public partial class initialPlusSeed : Migration
+    public partial class InitialWithSeed : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -136,7 +136,7 @@ namespace YellowCarrot.Migrations.RecipeDb
                     { 4, "Elven bread", "200g", 2 },
                     { 5, "Mallorn leaves", "3", 2 },
                     { 6, "Hellström Gin", "5cl", 3 },
-                    { 7, "Neutral Tonic (ekobryggeriet origianal)", "10cl", 3 },
+                    { 7, "Neutral Tonic (ekobryggeriet original)", "10cl", 3 },
                     { 8, "Is", "Mycket", 3 },
                     { 9, "Timjan", "Ett par kvistar", 3 },
                     { 10, "Äpple", "Ett klyfta", 3 }
